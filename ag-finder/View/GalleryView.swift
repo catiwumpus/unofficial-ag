@@ -17,9 +17,16 @@ struct GalleryView: View {
     
     @State var inputText = ""
     @State var selectedHairColor = HairColor.all
+    @State var selectedEyeColor = EyeColor.all
+    @State var selectedMold = Mold.all
+    @State var selectedBrows = Brows.all
+    @State var selectedSkin = Skin.all
+    @State var selectedFreckles = Freckles.all
+    @State var selectedBangs = Bangs.all
+    
     //MARK: -BODY
     var body: some View {
-        AppBarView(inputText: $inputText, selectedHairColor: $selectedHairColor)
+        AppBarView(inputText: $inputText, selectedHairColor: $selectedHairColor, selectedEyeColor: $selectedEyeColor, selectedMold: $selectedMold, selectedBrows: $selectedBrows, selectedSkin: $selectedSkin, selectedFreckles: $selectedFreckles, selectedBangs: $selectedBangs)
             .padding(.bottom, 5)
         Divider()
             .frame(width: UIScreen.main.bounds.width)
@@ -30,6 +37,18 @@ struct GalleryView: View {
                     filterSearchText(doll)
                 }).filter({ doll in
                     filterHairColor(doll)
+                }).filter({ doll in
+                    filterEyeColor(doll)
+                }).filter({ doll in
+                    filterMold(doll)
+                }).filter({ doll in
+                    filterBrows(doll)
+                }).filter({ doll in 
+                    filterSkin(doll)
+                }).filter({ doll in
+                    filterFreckles(doll)
+                }).filter({ doll in
+                    filterBangs(doll)
                 }), id: \.self) { doll in
                     DollThumbnailView(doll: doll)
                 }
@@ -49,6 +68,60 @@ struct GalleryView: View {
     
     private func filterHairColor(_ doll: Doll) -> Bool {
         if selectedHairColor == .all || selectedHairColor == doll.hair
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterEyeColor(_ doll: Doll) -> Bool {
+        if selectedEyeColor == .all || selectedEyeColor == doll.eyes
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterMold(_ doll: Doll) -> Bool {
+        if selectedMold == .all || selectedMold == doll.face
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterBrows(_ doll: Doll) -> Bool {
+        if selectedBrows == .all || selectedBrows == doll.brows
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterSkin(_ doll: Doll) -> Bool {
+        if selectedSkin == .all || selectedSkin == doll.skin
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterFreckles(_ doll: Doll) -> Bool {
+        if selectedFreckles == .all || selectedFreckles == doll.freckles
+            {
+                return true
+            } else {
+                return false
+            }
+        }
+    
+    private func filterBangs(_ doll: Doll) -> Bool {
+        if selectedBangs == .all || selectedBangs == doll.bangs
             {
                 return true
             } else {

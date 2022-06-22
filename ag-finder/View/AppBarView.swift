@@ -13,6 +13,12 @@ struct AppBarView: View {
     
     @Binding var inputText: String
     @Binding var selectedHairColor: HairColor
+    @Binding var selectedEyeColor: EyeColor
+    @Binding var selectedMold: Mold
+    @Binding var selectedBrows: Brows
+    @Binding var selectedSkin: Skin
+    @Binding var selectedFreckles: Freckles
+    @Binding var selectedBangs: Bangs
     
     var SearchBarView: some View {
         VStack {
@@ -65,8 +71,113 @@ struct AppBarView: View {
                         .padding(.vertical, -3)
                         .overlay(Capsule().stroke(Color.gray))
                     } label: {
-                        Text("Hair Color")
+                        Text("Hair")
                     }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedEyeColor, label: Text("Hair Color")) {
+                            ForEach(EyeColor.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Eyes")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedMold, label: Text("Mold")) {
+                            ForEach(Mold.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Face")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedBrows, label: Text("Brows")) {
+                            ForEach(Brows.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Brows")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedSkin, label: Text("Skin")) {
+                            ForEach(Skin.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Skin")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedFreckles, label: Text("Freckles")) {
+                            ForEach(Freckles.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Freckles")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
+                    
+                    Menu {
+                        Picker(selection: $selectedBangs, label: Text("Bangs")) {
+                            ForEach(Bangs.allCases, id: \.self) { value in
+                                Text(value.rawValue)
+                                    .tag(value)
+                            }
+                        }
+                        .colorMultiply(.black)
+                        .padding(.vertical, -3)
+                        .overlay(Capsule().stroke(Color.gray))
+                    } label: {
+                        Text("Bangs")
+                    }
+                    .padding(3)
+                    .foregroundColor(.black)
+                    .overlay(Capsule().stroke(.black))
                 }
             }
         }
